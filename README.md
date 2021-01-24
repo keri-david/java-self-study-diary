@@ -2,7 +2,7 @@
 这是keri从2021/1/22建立的仓库，用来记录寒假自学java语言的过程，计划一天一提交，直到开学为止。  
 目前在学慕课上的java零基础课程：[链接](https://www.icourse163.org/learn/ZJU-1001541001?tid=1450243457#/learn/announce)
 > ## ***Day1:***
-- java的初学者ide是eclipse,本人使用archlinux,安装方法为yay -S openjdk-8 eclipse-jee,java环境为openjdk-8,Mac和Windows从官网可下载java和ide；
+- java的初学者ide是eclipse,本人使用archlinux,安装方法为yay -S jdk8-openjdk eclipse-jee,java环境为openjdk-8,Mac和Windows从官网可下载java和ide；
 - 用eclipse去写第一个java程序——helloWorld，新建项目之后，右击src文件夹，新建class类，勾选下面第一个[public......]选项，目前作用不知，以后知道的话会记录；
 - ide的自动补全，不会自己跳出来，需要你去按下ALT+/，之后上下选择，回车确定，System.out.println("helloWorld");用println是输出后自动换行，点击上面绿色播放按钮编译运行软件，可以事先按下CTRL+S保存下，之后console栏会输出结果；
 - helloworld完成，我们学习java的输入，Scanner in = new Scaner（System.in），注意当你补全Scanner时要注意选择util相关的那个，随后会自动生成import java.util.Scanner；之后我们可以看下输入的内容有没有被读取到，System.out.println（“echo：” + in.nextLine（））；返回的内容就是echo：加上你输入的内容；
