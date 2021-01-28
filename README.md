@@ -1,4 +1,4 @@
-# keri自学java日记
+# keri寒假自学java
 这是keri从2021/1/22建立的仓库，用来记录寒假自学java语言的过程，计划一天一提交，直到开学为止。  
 目前在学慕课上的java零基础课程：[链接](https://www.icourse163.org/learn/ZJU-1001541001?tid=1450243457#/learn/announce)
 > ## ***Day1:*** 计算
@@ -302,6 +302,66 @@ public class Main {
 
 ```
 > ## ***Day5:*** 没学习
-今天没学java,和同学出去玩了，回家吧昨天没写完的`念整数`写完了；  
-> ## ***Day6：***
+今天没学java,和同学出去玩了，回家把昨天没写完的`念整数`写完了；  
+> ## ***Day6：*** 数组
+- 数组的定义：
+    int [] number = mew int[100];
+- 元素个数必须给，而且是整数，可以是变量，默认全部的值是0；
+- 下标越界问题：超出边界，编译器不会检查，但是运行会终止，可以用变量代替常数来解决这个问题
+- 定义好后，长度不能改变，number.length可以知道长度
+- 如果事先定义好数组a,然后int [] b=a;这时如果我们对b这个数组进行操作，那么数组a也会发生变化，因为a和b只是同时都是那组数据的管理者，不是所有者。
+- 如果进行逻辑运算，a==b,除了上面这种情况，输出都是false，即使他们的元素和元素位置完全相同
+- 那么该如何进行传统意义上的赋值呢？只能通过遍历的方式进行。
+- 那么如何进行判等呢？还是用遍历的方式，如果在长度相等的情况下，有一组数据不等，那么不等，否则，等
+- for-each循环
+```java
+for(int k:data){
+......
+}
+```
+- 每一轮循环都会把data里的值拿出来给k,当然data是个数组变量
+>> ### day6编程题
+![多项式加法](code/day6-多项式加法-.png)  
+```java
+import java.util.Scanner;
 
+public class Main {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("请输入两个多项式：");
+		int [] a = new int[101];
+		int [] b = new int[101];
+		int mi=in.nextInt();
+		int xishu=in.nextInt();
+		while(mi>=0) {
+			a[mi]=xishu;
+			mi=in.nextInt();
+			xishu=in.nextInt();
+			if(mi==0) {
+				a[0]=xishu;
+				mi=in.nextInt();
+				xishu=in.nextInt();
+				break;
+			}
+		}
+		while(mi>=0) {
+			b[mi]=xishu;
+			mi=in.nextInt();
+			xishu=in.nextInt();
+			if(mi==0) {
+				b[0]=xishu;
+				break;
+			}
+		}
+		for(int i=a.length-1;i>0;i--) {
+			if(a[i]!=0||b[i]!=0) {
+				System.out.print((a[i]+b[i])+"*"+i+"+");
+			}
+		}
+		if(a[0]!=0||b[0]!=0) {
+			System.out.print((a[0]+b[0]));
+		}
+		in.close();
+	}
+}
+```
