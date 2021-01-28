@@ -321,7 +321,7 @@ for(int k:data){
 ```
 - 每一轮循环都会把data里的值拿出来给k,当然data是个数组变量
 >> ### day6编程题
-![多项式加法](code/day6-多项式加法-.png)  
+![多项式加法](code/day6-多项式加法.png)  
 ```java
 import java.util.Scanner;
 
