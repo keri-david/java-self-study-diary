@@ -17,6 +17,9 @@
     - [Day5: 没学习](#day5-%E6%B2%A1%E5%AD%A6%E4%B9%A0)
     - [Day6： 数组](#day6-%E6%95%B0%E7%BB%84)
         - [day6编程题](#day6%E7%BC%96%E7%A8%8B%E9%A2%98)
+    - [Day7： 使用对象](#day7-%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1)
+        - [Day7编程题](#day7%E7%BC%96%E7%A8%8B%E9%A2%98)
+    - [day8](#day8)
 
 <!-- /TOC -->
 > 内容
@@ -459,3 +462,4 @@ public class Main {
 	}
 }
 ```
+## day8:
