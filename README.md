@@ -391,3 +391,71 @@ public class Main {
 	}
 }
 ```
+## Day7： 使用对象
+- 单引号`''`表示单个的字符
+- 字符运算char a='A';a++;这是a的值就是B；如果输出'A'-'D',结果就是3,表示距离为3
+- 大小写字母在Unicode编码表中是分开顺序排列的，'a'>'Z'，也就是a在Z的后面
+- 那么如何实现大小写字母的转换呢？
+``` java
+//小写转大写
+char test1='a';
+char test2=(char)(test1+'A'-'a');
+System.out.print(test2)
+//大写转小写
+char test1='A';
+char test2=(char)(test1+'a'-'A');
+System.out.print(test2)
+```
+- 逃逸字符  
+| \b | 回退一格 | \" |双引号|
+|---|---|---|---|
+| \t | 下一个制表位 | \' |单引号 |
+| \n | 换行 | \\ | 反斜杠本身 |
+| \r | 回车 |
+- Math 类  
+| abs |绝对值 |
+|---|---|
+|pow|幂次计算 |
+|random| 给出0～1之间的随机数|
+|round| 四舍五入|
+- 在java系统的库中，所有首字母大写的都是类
+- 字符串String是个类，是管理者，不是所有者
+``` java
+String s = new String("a String");
+String s = "a String";
+```
+- 字符串连接
+"I am"+"18"->"I am18"
+1+2+"age"->"3age"
+"age"+1+2->"age12"
+"age"+(1+2)->"age3"
+- 如何读入字符串，用in.nextline,读入一整行
+- 比较字符串是否相等，不用`==`，而是用s.equals("bye");比较s的内容是不是bye,`==`含义是是否是同一个东西
+- 比较字符串的大小s1.compareTo(s2),正数表示S1大，0表示相等，-1表示S2大
+- 字符串长度获取，s.length
+- 访问字符串里字符，s.charAt(i)，i从零开始，到s.length-1;
+- 获取子字符串，s.substeing(n)表示从n号位置到末尾，s.substring(b,e)表示从b位置到e位置的字符串，不包括e
+- 在字符串中查找字符或字符串，s.indexOf(t),给出t的位置，没有就返回-1,s.indexOf(t,e),从e这个位置开始，查找t,包括e这个位置，s.indexOf("S"),查找字符串的位置
+- 字符串不可变，操作都是弄出新的字符串  
+### Day7编程题
+![单词长度](code/day7-单词长度.png)  
+```java
+public class Main {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("请输入一行文本:");
+		String s = in.next();;
+		while (!(s.equals("."))) {
+			if (s.indexOf('.')<0) {
+				System.out.print(s.length()+" ");
+			}
+			else {
+				System.out.print(s.length()-1);
+				s=".";
+			}
+			s = in.next();
+		}
+		in.close();
+	}
+}
+```
