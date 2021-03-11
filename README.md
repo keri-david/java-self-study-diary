@@ -19,7 +19,8 @@
         - [day6编程题](#day6%E7%BC%96%E7%A8%8B%E9%A2%98)
     - [Day7： 使用对象](#day7-%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1)
         - [Day7编程题](#day7%E7%BC%96%E7%A8%8B%E9%A2%98)
-    - [day8](#day8)
+    - [day8:函数](#day8%E5%87%BD%E6%95%B0)
+        - [day8编程题](#day8%E7%BC%96%E7%A8%8B%E9%A2%98)
 
 <!-- /TOC -->
 > 内容
@@ -410,12 +411,14 @@ char test2=(char)(test1+'a'-'A');
 System.out.print(test2)
 ```
 - 逃逸字符  
+ 
 | \b | 回退一格 | \" |双引号|
 |---|---|---|---|
 | \t | 下一个制表位 | \' |单引号 |
 | \n | 换行 | \\ | 反斜杠本身 |
 | \r | 回车 |
-- Math 类  
+- Math 类 
+ 
 | abs |绝对值 |
 |---|---|
 |pow|幂次计算 |
@@ -428,10 +431,12 @@ String s = new String("a String");
 String s = "a String";
 ```
 - 字符串连接
-"I am"+"18"->"I am18"
-1+2+"age"->"3age"
-"age"+1+2->"age12"
-"age"+(1+2)->"age3"
+
+|"I am"+"18"|"I am18"|
+|---|---|
+|1+2+"age"|"3age"|
+|"age"+1+2|"age12"|
+|"age"+(1+2)|"age3"|
 - 如何读入字符串，用in.nextline,读入一整行
 - 比较字符串是否相等，不用`==`，而是用s.equals("bye");比较s的内容是不是bye,`==`含义是是否是同一个东西
 - 比较字符串的大小s1.compareTo(s2),正数表示S1大，0表示相等，-1表示S2大
@@ -462,4 +467,68 @@ public class Main {
 	}
 }
 ```
-## day8:
+## day8:函数
+- 在用debug模式调试函数的时候，我们可以用左边那个step into 按钮来进入函数内部执行，进入之后，可以按下右边的step return来跳过函数的执行
+- 函数参数的类型不匹配问题，如果提供的参数比要求的参数类型要精确，这是不允许的，如果提供的参数比要求的参数类型要粗略的话，编译器会自动进行类型转换，强制类型转换可以解决前面那个问题，但是不建议
+- 函数传递的是数值，而不是变量本身，要注意形参和实参的区别
+### day8编程题
+![分解质因数](code/day8-分解质因数.png)
+```java
+import java.util.Scanner;
+
+public class Main {
+	public static int isPrime(int x) {
+		for (int i = 2; i < x; i++) {
+			if (x % i == 0) {
+				x = 0;
+				break;
+			}
+		}
+		return x;
+	}
+
+	public static String fenjie(int x) {
+		String s = new String("n=");
+		int yinshu1;
+		int yinshu2 = 0;
+		while (isPrime(yinshu2) == 0) {
+			for (int i = 2; i < x; i++) {
+				if (x % i == 0) {
+					yinshu1 = i;
+					yinshu2 = x / i;
+					if (isPrime(yinshu1) != 0) {
+						s += (yinshu1 + "*");
+					} else {
+						fenjie(yinshu1);
+					}
+					if (isPrime(yinshu2) != 0) {
+						s += (yinshu2 + "*");
+						break;
+					} else {
+						x = yinshu2;
+						i=1;
+					}
+				}
+			}
+		}
+		s = s.substring(0, s.length() - 1);
+		return s;
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("请输入一个合数n：");
+		int heshu = in.nextInt();
+		if (heshu > 2 && heshu < 100000) {
+			if (isPrime(heshu) != 0) {
+				System.out.println("n=" + heshu);
+			} else {
+				System.out.print(fenjie(heshu));
+			}
+		} else {
+			System.out.println("输入超出范围！");
+		}
+		in.close();
+	}
+}
+```
